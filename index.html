@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renuka Tours And Travels</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header>
+    <a href="#" class="logo">
+        <img src="/img/Renuka Tours And Travels-logos.jpeg" alt="">
+    </a>
+
+    <div class="bx bx-menu" id="menu-icon"></div>
+
+    <ul class="navbar">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#package">Package</a></li>
+        <li><a href="#cars">Cars</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+    </ul>
+     <script>
+    let menu = document.querySelector('#menu-icon');
+    let navbar = document.querySelector('.navbar');
+
+    menu.addEventListener('click', () => {
+        navbar.classList.toggle('active');
+    });
+  </script>
+
+</body>
+</header>
+    <section class="whatsapp">
+        <a href=" https://wa.me/+919175279626">
+            <img src="img/whatsapp-icone-2.png" height="70px" width="70px">
+        </a>
+    </section>
+    <section class="home" id="home">
+        <div class="text">
+            <h1><span>Looking</span> To <br>Rent A Car</h1>
+            <p>Best Car Provider In Chhtrapati Sambhajinagar</p>
+        </div>
+       <div id="ff-compose"></div>
+<div id="ff-compose"></div>
+<div id="ff-compose"></div>
+<div id="ff-compose"></div>
+<div id="ff-compose"></div>
+<div class="booking-container">
+  <h2>🚖 Book Your Ride</h2>
+
+  <div class="input-group">
+    <input type="text" id="name" required>
+    <label>Name</label>
+  </div>
+
+  <div class="input-group">
+    <input type="text" id="phone" required>
+    <label>Phone Number</label>
+  </div>
+
+  <div class="input-group">
+    <input type="text" id="pickup" required>
+    <label>Pickup Location</label>
+  </div>
+
+  <div class="input-group">
+    <input type="text" id="drop" required>
+    <label>Drop Location</label>
+  </div>
+
+  <div class="input-group">
+    <input type="date" id="date" required>
+    <label>Date</label>
+  </div>
+
+  <button onclick="sendEnquiry()">Book Now</button>
+
+  <p id="msg"></p>
+</div>
+
+<style>
+body {
+  font-family: Arial;
+  background: #f4f4f4;
+}
+
+.booking-container {
+  max-width: 400px;
+  margin: 50px auto;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.booking-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
+
+.input-group label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  color: gray;
+  font-size: 14px;
+  transform: translateY(-50%);
+  transition: 0.3s;
+  background: white;
+  padding: 0 5px;
+}
+
+.input-group input:focus + label,
+.input-group input:valid + label {
+  top: -8px;
+  font-size: 12px;
+  color: black;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: black;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #333;
+}
+
+#msg {
+  text-align: center;
+  margin-top: 10px;
+}
+</style>
+
+<script>
+function sendEnquiry() {
+  const btn = document.querySelector("button");
+  btn.innerText = "Sending...";
+  btn.disabled = true;
+
+  const data = {
+    name: document.getElementById("name").value,
+    phone: document.getElementById("phone").value,
+    pickup: document.getElementById("pickup").value,
+    drop: document.getElementById("drop").value,
+    date: document.getElementById("date").value
+  };
+
+  if(!data.name || !data.phone || !data.pickup || !data.drop){
+    document.getElementById("msg").innerText = "⚠️ Please fill all fields";
+    btn.innerText = "Book Now";
+    btn.disabled = false;
+    return;
+  }
+
+  fetch("http://localhost:5000/send-enquiry", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+  .then(res => res.text())
+  .then(() => {
+    document.getElementById("msg").innerText = "✅ Booking Sent!";
+    btn.innerText = "Book Now";
+    btn.disabled = false;
+  })
+  .catch(() => {
+    document.getElementById("msg").innerText = "❌ Error sending request";
+    btn.innerText = "Book Now";
+    btn.disabled = false;
+  });
+}
+</script>        </div>
+    </section>
+    <section class="package" id="package">
+        <div class="heading">
+            <span>
+                Best Price
+            </span>
+            <h1>Affordable Packages</h1>
+        </div>
+        <div class="packages-container">
+            <div class="box">
+                <div class="box-img">
+                    <img src="img/ajanta-ellora-caves-4.jpg" alt="">
+                </div>
+                <h4>Ajanta Ellora Two Day's Package</h4>
+                <h3>For Sedan INR 5500/-</h3>
+                <h3>For SUV INR 8000/-</h3>
+                <a href="tel:+9175279626" class="btn">Get Now</a>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="img/saibaba.jpg" alt="">
+                </div>
+                <h4>Shirdi One Day Package</h4>
+                <h3>For Sedan INR 12rs/KM</h3>
+                <h3>For SUV INR 17rs/KM</h3>
+                <p>Toll/Parking EXTRA</p>
+                <a href="tel:+9175279626" class="btn">Get Now</a>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="img/kokankada.jpg" alt="">
+                </div>
+                <h4> SAMBHAJINAGAR TO All OVER MAHARASHTRA</h4>
+                <h3>For sedan 12RS/KM</h3>
+                <h3>For SUV INR 17RS/KM</h3>
+                <p>Toll/Parking EXTRA</p>
+                <a href="tel:+9175279626" class="btn">Get Now</a>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="img/RAJMACHI.jpg" alt="">
+                </div>
+                <h4> SAMBHAJINAGAR TO All INDIA </h4>
+                <h3>For sedan 12RS/KM</h3>
+                <h3>For SUV INR 17RS/KM</h3>
+                <p>Toll/Parking EXTRA</p>
+                <a href="tel:+91 9175279626" class="btn">Get Now</a>
+            </div>
+        </div>
+    </section>
+    <section class="cars" id="cars">
+        <div class="heading">
+            <span>
+                Sedan And SUV'S</samp>
+            </span>
+            <h1>Cars Available</h1>
+        </div>
+        <div class="Cars-container">
+            <div class="box">
+                <div class="box-img">
+                    <img src="img/Crysta.png" alt="">
+                </div>
+                <p>Innova Crysta</p>
+                <h3>17RS/KM</h3>  
+                <a href="tel:+9175279626" class="btn">Learn More</a>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="img/toyota-innova-2014.webp" alt="">
+                </div>
+                <p>Innova </p>
+                <h3>16RS/KM</h3>  
+                <a href="tel:+9175279626" class="btn">Learn More</a>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="img/toyota-etios.jpg" alt="">
+                </div>
+                <p>Toyota Etios</p>
+                <h3>12RS/KM</h3>  
+                <a href="tel:+9175279626" class="btn">Learn More</a>
+            </div>
+            <div class="box">
+                <div class="box-img">
+                    <img src="img/honda-amaze.jpg" alt="">
+                </div>
+                <p>Honda Amaze</p>
+                <h3>12RS/KM</h3>  
+                <a href="tel:+9175279626" class="btn">Learn More</a>
+            </div>
+            
+        </div>
+    </section>
+    <section>
+
+        <div class="about-container">
+            <div class="heading">
+                <span>
+                    Our Services
+                </span>
+                <h1>About US</h1>
+            </div>
+            
+            <div class="about-img" >
+                <img src="img/akul.webp" alt="">
+            </div>
+            <div class="about-text">
+                <span>About Us</span>
+                <p>Welcome to Aurangabad Ajanta Car Rental 
+                    At Renuka Tours And Travels, we’re more than just a car rental business. We’re your trusted partner for all your Tourism needs.
+                    Customer-Centric Approach: We treat our customers like family. Whether you’re a frequent traveler, a road tripper, or just need a temporary ride, we’re here for you. With over 8,000 locations worldwide, we’re always within reach.</p>
+                <p>Quality Vehicles: Our clean, well-maintained cars and trucks ensure a smooth and comfortable ride. From compact cars to spacious SUVs, we’ve got you covered.
+                    Sustainability: We believe in making the world a better place. Our commitment to sustainability drives us to innovate, research, and test market-driven solutions</p>
+            </div>
+
+        </div> 
+        
+    </section>
+    <section class="reviews" id="reviews">
+        <div class="heading">
+            <span>Reviews</span>
+            <h1>What People Says...!</h1>
+        </div>
+        <div class="reviews-container">
+            <div class="box">
+                <div class="rev-img">
+                    <img src="img/x.jpg" alt="">
+                </div>
+                <h2>Abhijeet Thote</h2>
+                <div class="star">
+                   <i class='bx bx-star'></i>
+                   <i class='bx bx-star'></i>
+                   <i class='bx bx-star'></i>
+                   <i class='bx bx-star'></i>
+                   <i class='bx bx-star-half'></i>
+                </div>
+                <p>The pickup process is efficient. Staff members are courteous and guide you through paperwork and vehicle inspection. They explain features and answer any questions. The waiting time is usually minimal.</p>
+            </div>
+            <div class="box">
+                <div class="rev-img">
+                    <img src="img/y.png" alt="">
+                </div>
+                <h2>Pratiksha Kashyap</h2>
+                <div class="star">
+                   <i class='bx bx-star'></i>
+                   <i class='bx bx-star'></i>
+                   <i class='bx bx-star'></i>
+                   <i class='bx bx-star'></i>
+                   <i class='bx bx-star-half'></i>
+                </div>
+                <p>Check if the website offers a wide range of vehicles, including economy, mid-size, SUVs, and luxury cars.
+                    Availability of specialty vehicles (convertibles, electric cars) is a plus.</p>
+            </div>
+            <div class="box">
+                <div class="rev-img">
+                    <img src="img/b.jpg" alt="">
+                </div>
+                <h2>Rahul Kumar</h2>
+                <div class="star">
+                   <i class='bx bx-star'></i>
+                   <i class='bx bx-star'></i>
+                   <i class='bx bx-star'></i>
+                   <i class='bx bx-star'></i>
+                   <i class='bx bx-star-half'></i>
+                </div>
+            <p>Transparent pricing is crucial. Ensure that the website clearly displays rental rates, taxes, fees, and any additional costs.
+                Look for breakdowns of daily rates, weekly rates, and any mileage limits</p>
+            </div>
+            
+        </div>
+     </div>
+
+    </section>
+    <div class="copyright">
+        <p>&#169;  Renuka Tours And Travels All Rights Reserved</p>
+        <div class="social">
+            <a href="#"><i class='bx bxl-facebook'></i></a>
+            <a href="#"><i class='bx bxl-instagram'></i></a>
+            <a href="#"><i class='bx bxl-twitter'></i></a>
+        </div>
+    </div>
+</script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script src="https://cdn.jsdelivr.net/nmp/sweetalert2@11"></script>
+<script src="whatsapp.js"></script>
+    </script>
+    
+</body>
+</html>
