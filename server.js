@@ -6,8 +6,14 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.get("/", (req, res) => {
+  res.send("Taxi Backend Running 🚕");
+});
 
-// API
+// TEST API
+app.get("/api/test", (req, res) => {
+  res.json({ message: "API working 🚀" });
+});
 app.post("/send-enquiry", async (req, res) => {
   const { name, phone, pickup, drop, date } = req.body;
 
