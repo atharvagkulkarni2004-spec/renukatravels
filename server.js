@@ -21,7 +21,7 @@ app.post("/api/book", async (req, res) => {
 
   const mailOptions = {
     from: "your_email@gmail.com",
-    to: "your_email@gmail.com", // jaha mail receive karna hai
+    to: "atharvagkulkarni2004@gmail.com", // jaha mail receive karna hai
     subject: "🚖 New Taxi Booking",
     html: `
       <h2>New Booking Received</h2>
