@@ -43,7 +43,7 @@ form.addEventListener("submit", function (e) {
 
   console.log("Form Submitted");
 
-  fetch("https://renukatravels.onrender.com/book", {
+  fetch("https://renukatravels.onrender.com/api/book", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
