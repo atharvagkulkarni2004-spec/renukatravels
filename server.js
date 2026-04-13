@@ -1,3 +1,4 @@
+const ("dotenv").config();
 const express = require("express");
 const nodemailer = require("nodemailer");
 const cors = require("cors");
@@ -20,7 +21,7 @@ app.post("/api/book", async (req, res) => {
   
 const { name, phone, pickup, destination, pickupDate, returnDate } = req.body;
   const mailOptions = {
-    from: "your_email@gmail.com",
+    from: process.env.EMAIL,
     to: "atharvagkulkarni2004@gmail.com", // jaha mail receive karna hai
     subject: "🚖 New Taxi Booking",
     html: `
