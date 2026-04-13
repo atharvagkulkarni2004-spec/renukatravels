@@ -29,7 +29,7 @@ sr.reveal(".form-container form", { delay: 800, origin: "left" });
 
 
 // ===== Form Submission (Backend Connection) =====
-const form = document.querySelector(".form-container form");
+const form = document.querySelector(".bookingform");
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -43,7 +43,7 @@ form.addEventListener("submit", function (e) {
 
   console.log("Form Submitted");
 
-  fetch("http://localhost:5000/book", {
+  fetch("https://renukatravels.onrender.com/book", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
