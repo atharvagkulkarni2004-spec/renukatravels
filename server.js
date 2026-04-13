@@ -17,20 +17,22 @@ const transporter = nodemailer.createTransport({
 
 // API
 app.post("/api/book", async (req, res) => {
-  const { name, phone, pickup, drop, date } = req.body;
-
+  
+const { name, phone, pickup, destination, pickupDate, returnDate } = req.body;
   const mailOptions = {
     from: "your_email@gmail.com",
     to: "atharvagkulkarni2004@gmail.com", // jaha mail receive karna hai
     subject: "🚖 New Taxi Booking",
     html: `
-      <h2>New Booking Received</h2>
-      <p><b>Name:</b> ${name}</p>
-      <p><b>Phone:</b> ${phone}</p>
-      <p><b>Pickup:</b> ${pickup}</p>
-      <p><b>Drop:</b> ${drop}</p>
-      <p><b>Date:</b> ${date}</p>
-    `
+     html: `
+  <h2>New Booking Received</h2>
+  <p><b>Name:</b> ${name}</p>
+  <p><b>Phone:</b> ${phone}</p>
+  <p><b>Pickup:</b> ${pickup}</p>
+  <p><b>Destination:</b> ${destination}</p>
+  <p><b>Pickup Date:</b> ${pickupDate}</p>
+  <p><b>Return Date:</b> ${returnDate}</p>
+`
   };
 
   try {
